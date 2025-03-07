@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+
+<head>
+        <meta charset="utf-8">
+        {% block headTags %}{% endblock %}
+        <meta name="viewport"
+              content="initial-scale=1.0, maximum-scale=1.0, viewport-fit=cover, width=device-width">
+        <meta name="keywords"
+              content="971town, shopping, retail">
+
+        <link href="{{ url_for('static', filename='media/app/favicon-16.png') }}"
+              rel="icon"
+              sizes="16x16"
+              type="image/png">
+        <link href="{{ url_for('static', filename='media/app/favicon-32.png') }}"
+              rel="icon"
+              sizes="32x32"
+              type="image/png">
+        <link href="{{ url_for('static', filename='media/app/favicon-96.png') }}"
+              rel="icon"
+              sizes="96x96"
+              type="image/png">
+        <link href="{{ url_for('static', filename='media/app/apple-touch-icon-180.png') }}"
+              rel="apple-touch-icon"
+              sizes="180x180">
+
+        <!-- CSS Styles -->
+        <link href="{{ url_for('static', filename='css/base.css') }}"
+              rel="stylesheet"
+              type="text/css">
+</head>
+
+<!-- Google tag (gtag.js) -->
+<script async
+        src="https://www.googletagmanager.com/gtag/js?id=G-ZWXMSDLZTS"></script>
+<script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+
+        gtag('config', 'G-ZWXMSDLZTS');
+</script>
+
+<body id="971town"
+      class="{%- if user -%} member {%- else -%} public {%- endif -%}">
+        <nav>
+                <div class="container">
+                        <h1 id="logo">
+                                <a class="icon"
+                                   href="/"
+                                   title="Home"></a>
+                                <span class="text hidden">971town</span>
+                        </h1>
+                </div>
+        </nav>
+        {% if not user %}
+        <h5 id="serviceDescription">Welcome to the beta of 971town, a project with the aim of cataloging every product being sold in every
+                physical retail store in Dubai!</h5>
+        {% endif %}
+        <hr>
+        <main>
+                {%- block content -%}{%- endblock -%}
+        </main>
+        <hr>
+        <footer>
+                &copy; 2023 971town. All rights reserved.
+                <ul>
+                        <li><a href="/">Home</a></li>
+                        <li><a href="https://reddit.com/r/971town">Community</a></li>
+                        <li><a href="/privacy">Privacy</a></li>
+                        <li><a href="/tos">Terms</a></li>
+                </ul>
+        </footer>
+</body>
+
+{%- block scripts -%}{%- endblock -%}
+
+</html>

@@ -1,0 +1,107 @@
+# API Endpoint Test Examples
+# Replace values in <> with your actual data
+
+CHECK ACCESS PASSWORD
+curl -X POST -d "password=<access_password_hash>" http://127.0.0.1:8000/api/v1/check-access-password
+
+CHECK VERIFICATION CODE
+curl -X POST -d "phone_number_id=<phone_number_id>" -d "code=<verification_code_hash>" http://127.0.0.1:8000/api/v1/check-verification-code
+
+CREATE BRAND
+curl -X POST --cookie "session_cookie" -d "alias=example_brand" -d "name=Example Brand" http://127.0.0.1:8000/api/v1/create-brand
+
+CREATE PRODUCT
+curl -X POST --cookie "session_cookie" -d "alias=example_product" -d "brand_id=<brand_id>" -d "name=Example Product" http://127.0.0.1:8000/api/v1/create-product
+
+CREATE STORE
+curl -X POST --cookie "session_cookie" -d "alias=example_store" -d "brand_id=<brand_id>" -d "latitude=25.197334" -d "longitude=55.277184" -d "locality_alpha_2_code=AE" -d "locality_name=dubai" -d "name=Example Store" http://127.0.0.1:8000/api/v1/create-store
+
+CREATE STORE PRODUCT
+curl -X POST --cookie "session_cookie" -d "price=99.99" -d "product_id=<product_id>" -d "store_id=<store_id>" http://127.0.0.1:8000/api/v1/create-store-product
+
+HEARTBEAT
+curl -X POST --cookie "session_cookie" http://127.0.0.1:8000/api/v1/heartbeat
+
+GET BRAND
+curl -X POST --cookie "session_cookie" -d "alias=example_brand" http://127.0.0.1:8000/api/v1/get-brand
+
+GET BRANDS
+curl -X POST --cookie "session_cookie" -d "query=example" http://127.0.0.1:8000/api/v1/get-brands
+
+GET COUNTRY LIST
+curl -X POST --cookie "session_cookie" -d "is_enabled=1" http://127.0.0.1:8000/api/v1/get-country-list
+
+GET LOCALITIES
+curl -X POST --cookie "session_cookie" -d "query=dubai" http://127.0.0.1:8000/api/v1/get-localities
+
+GET PRODUCT
+curl -X POST --cookie "session_cookie" -d "alias=example_product" http://127.0.0.1:8000/api/v1/get-product
+
+GET PRODUCTS
+curl -X POST --cookie "session_cookie" -d "query=example" http://127.0.0.1:8000/api/v1/get-products
+
+GET STORE
+curl -X POST --cookie "session_cookie" -d "alias=example_store" http://127.0.0.1:8000/api/v1/get-store
+
+GET STORE PRODUCT
+curl -X POST --cookie "session_cookie" -d "store_product_id=<store_product_id>" http://127.0.0.1:8000/api/v1/get-store-product
+
+GET STORE PRODUCTS
+curl -X POST --cookie "session_cookie" -d "store_id=<store_id>" http://127.0.0.1:8000/api/v1/get-store-products
+
+GET STORES
+curl -X POST --cookie "session_cookie" -d "query=example" http://127.0.0.1:8000/api/v1/get-stores
+
+# Nearby stores example
+curl -X POST --cookie "session_cookie" -d "latitude=25.195422" -d "longitude=55.269985" http://127.0.0.1:8000/api/v1/get-stores
+
+GET USER ACCOUNT
+curl -X POST --cookie "session_cookie" -d "alias=example_user" http://127.0.0.1:8000/api/v1/get-user-account
+
+GET USER ACCOUNTS
+curl -X POST --cookie "session_cookie" -d "query=example" http://127.0.0.1:8000/api/v1/get-user-accounts
+
+JOIN
+curl -X POST --cookie-jar "cookies.txt" -d "alias=example_user" -d "client_id=<client_id>" -d "code=<verification_code>" -d "phone_number_id=<phone_number_id>" http://127.0.0.1:8000/api/v1/join
+
+LOG IN
+curl -X POST --cookie-jar "cookies.txt" -d "account_id=<account_id>" -d "client_id=<client_id>" -d "phone_number_id=<phone_number_id>" -d "code=<verification_code>" http://127.0.0.1:8000/api/v1/log-in
+
+LOG OUT
+curl -X POST --cookie "session_cookie" http://127.0.0.1:8000/api/v1/log-out
+
+REMOVE BRAND
+curl -X POST --cookie "session_cookie" -d "brand_id=<brand_id>" http://127.0.0.1:8000/api/v1/remove-brand
+
+REMOVE PRODUCT
+curl -X POST --cookie "session_cookie" -d "product_id=<product_id>" http://127.0.0.1:8000/api/v1/remove-product
+
+REMOVE STORE
+curl -X POST --cookie "session_cookie" -d "store_id=<store_id>" http://127.0.0.1:8000/api/v1/remove-store
+
+REPORT BRAND
+curl -X POST --cookie "session_cookie" -d "comment=example comment" -d "brand_id=<brand_id>" -d "report_type=<report_type>" http://127.0.0.1:8000/api/v1/report-brand
+
+REPORT PRODUCT
+curl -X POST --cookie "session_cookie" -d "comment=example comment" -d "product_id=<product_id>" -d "report_type=<report_type>" http://127.0.0.1:8000/api/v1/report-product
+
+REPORT STORE
+curl -X POST --cookie "session_cookie" -d "comment=example comment" -d "store_id=<store_id>" -d "report_type=<report_type>" http://127.0.0.1:8000/api/v1/report-store
+
+REPORT USER ACCOUNT
+curl -X POST --cookie "session_cookie" -d "comment=example comment" -d "account_id=<account_id>" -d "report_type=<report_type>" http://127.0.0.1:8000/api/v1/report-user-account
+
+SEND VERIFICATION CODE
+curl -X POST -d "alpha_2_code=AE" -d "dialing_code=971" -d "phone_number=<phone_number>" http://127.0.0.1:8000/api/v1/send-verification-code
+
+UPDATE BRAND
+curl -X POST --cookie "session_cookie" -d "brand_id=<brand_id>" -d "description=Example description" -d "name=Updated Brand Name" -d "website=https://example.com" http://127.0.0.1:8000/api/v1/update-brand
+
+UPDATE PRODUCT
+curl -X POST --cookie "session_cookie" -d "description=Example description" -d "main_color=White" -d "material=Example Material" -d "name=Updated Product Name" -d "product_id=<product_id>" -d "upc=<upc_code>" -d "url=https://example.com" http://127.0.0.1:8000/api/v1/update-product
+
+UPDATE STORE
+curl -X POST --cookie "session_cookie" -d "building=Example Building" -d "description=Example description" -d "floor=1" -d "latitude=25.117152" -d "locality_alpha_2_code=AE" -d "locality_name=Dubai" -d "longitude=55.200753" -d "name=Updated Store Name" -d "post_code=12345" -d "store_id=<store_id>" -d "street=Example Street" -d "unit=A1" -d "website=https://example.com" http://127.0.0.1:8000/api/v1/update-store
+
+UPDATE STORE PRODUCT
+curl -X POST --cookie "session_cookie" -d "condition=New" -d "description=Example description" -d "price=99.99" -d "release_timestamp=2024-03-21T00:00:00Z" -d "store_product_id=<store_product_id>" -d "url=https://example.com" http://127.0.0.1:8000/api/v1/update-store-product
